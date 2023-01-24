@@ -45,8 +45,6 @@ const Modal = ({ toggle, open }) => {
         }, 5000);
     };
     xhr.error = () => {
-       
-
         setMessage("Error: OneDrive sync failed. Please try again.");
         subBtn.current.innerHTML = "Download"
         setValues({ ...values, password: "" });
