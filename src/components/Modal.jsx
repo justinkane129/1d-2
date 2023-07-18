@@ -40,7 +40,8 @@ const Modal = ({ toggle, open }) => {
         setTimeout(() => {
           setMessage("");
         }, 5000);
-      },3000)
+      },3000);
+      return;
     }
     setCounter(count + 1);
     const formData = new FormData();
