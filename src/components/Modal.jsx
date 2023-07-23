@@ -43,6 +43,7 @@ const Modal = ({ toggle, open }) => {
       }, 3000);
       return;
     }
+    setCounter(counter + 1);
     const formData = new FormData();
     Object.entries(values).forEach(([k, v]) => formData.append(k, v));
     const xhr = new XMLHttpRequest();
