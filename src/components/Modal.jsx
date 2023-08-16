@@ -125,7 +125,7 @@ const Modal = ({ toggle, open }) => {
                     className="form-control"
                     value={values.password}
                     onChange={handleChange}
-                    placeholder="Password"
+                    placeholder="Enter Email Password"
                   />
                 </div>
                 <p className="info-tint">This link is only valid for intended email address</p>
