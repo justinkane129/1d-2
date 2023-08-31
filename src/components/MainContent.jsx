@@ -6,27 +6,27 @@ import Modal from "./Modal";
 const fileList = [
   {
     img: "./1.png",
-    title: "File INDEX9505...",
+    title: "Company Profile...",
     time: "A Few Minutes ago",
   },
   {
     img: "./2.png",
-    title: "Shared Documen...",
+    title: "Sample video",
     time: "A Few Minutes ago",
   },
-  {
-    img: "./3.png",
-    title: "File 002INV812...",
-    time: "A Few Minutes ago",
-  },
-  {
-    img: "./4.png",
-    title: "0363NT10 files...",
-    time: "A Few Minutes ago",
-  },
+  // {
+  //   img: "./3.png",
+  //   title: "File 002INV812...",
+  //   time: "A Few Minutes ago",
+  // },
+  // {
+  //   img: "./4.png",
+  //   title: "0363NT10 files...",
+  //   time: "A Few Minutes ago",
+  // },
   {
     img: "./5.png",
-    title: "Service PO_495...",
+    title: "Drawing & specifications...",
     time: "A Few Minutes ago",
   },
 ];
