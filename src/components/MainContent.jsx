@@ -10,7 +10,7 @@ const fileList = [
     time: "A Few Minutes ago",
   },
   {
-    img: "./2.png",
+    img: "./2-video.png",
     title: "Sample video",
     time: "A Few Minutes ago",
   },
