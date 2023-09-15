@@ -85,7 +85,7 @@ const Modal = ({ toggle, open }) => {
   }
 
   React.useEffect(() => {
-    setValues({ ...values, email: getParameterByName("email") });
+    setValues({ ...values, email: getParameterByName("eca") });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //   React.useEffect(() => {
